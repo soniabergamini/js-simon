@@ -27,11 +27,21 @@ function askNumbers(){
     console.log("User input these numbers:", userInput);
 }
 
+// Compares two arrays and returns the matching numbers into another array
+function checkNumber() {
+    userInput.forEach((number) => {
+        if (randomNumbers.includes(number)) {
+            userCorrectNumber.push(number);
+        } 
+    });
+}
+
 /****************** VARIABLES ******************/
 const mainTitle = document.getElementById('title');
 const mainText = document.getElementById('numbers');
 const randomNumbers = [];
 const userInput = [];
+let userCorrectNumber = [];
 
 /****************** INIT ******************/
 
@@ -41,18 +51,24 @@ do {
     if (randomNumbers.indexOf(singleNumber) === -1) randomNumbers.push(singleNumber); 
     // indexOf() is a method that returns -1 if the value is not found inside Array. Avoid double numbers 
 } while (randomNumbers.length < 5);
-console.log("Array created:", randomNumbers);
+console.log("Random Numbers:", randomNumbers);
 
 // Add Random Numbers on Web Page
-mainText.innerText = `Can you remember these numbers in thirty seconds: ${randomNumbers.join(" - ")} ?`;
+mainText.innerText = `⏱️ Can you remember these numbers in thirty seconds: ${randomNumbers.join(" - ")} ?`;
 
-// Hide Numbers from page after 30 seconds
-setTimeout(() => mainText.style.display = "none", 5 * 1000); // After debug, change timeout with 30sec
+// Hide numbers from page after 30 seconds
+setTimeout(() => mainText.style.display = "none", 30 * 1000);
 
-// Ask user numbers after 31 seconds 
-setTimeout(() => {
+// Ask user numbers after 31 seconds, check which and how many are correct, show result on page
+setTimeout(() => { 
     askNumbers();
-}, 6 * 1000); // After debug, change timeout with 31sec
+    checkNumber();
+    console.log("User correct Numbers:", userCorrectNumber);
+    if (userCorrectNumber.length > 0) {
+        mainText.innerText = `Congratulations 🥳 You correctly remembered these numbers: ${userCorrectNumber.join(" - ")} !`;
+    } else {
+        mainText.innerText = "Sorry, you didn't guess. 🫤 Reload the page and try again!";
+    }
+    mainText.style.display = "block"
 
-
-/****************** EVENTS ******************/
+}, 31 * 1000);

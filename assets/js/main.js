@@ -1,14 +1,4 @@
 /****************** FUNCTIONS ******************/
-
-// Create HTML Elements
-function createElement(tag, id, classes, content) {
-    const element = document.createElement(tag);
-    element.setAttribute("id", id);
-    element.setAttribute("class", classes);
-    element.innerText = (content);
-    return element;
-}
-
 // Create Random Numbers
 function getRandomNumber(min, max) {
     let number = Math.floor(Math.random() * (max - min + 1) + min);

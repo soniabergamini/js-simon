@@ -19,16 +19,6 @@ body {
     font-family: 'Poiret One', cursive;
 }
 
-img {
-    max-width: 100%;
-}
-
-/* BACKGROUND STYLE */
-.bgPink        {background-color: var(--pink); color: var(--green);}
-.bgRed         {background-color: var(--red);}
-.bgGreen       {background-color: var(--green);}
-.bgBlue        {background-color: var(--blue);}
-
 /* FLEX & DISPLAY STYLE */
 .dNone         {display: none;}
 .dBlock        {display: block;}
@@ -50,6 +40,7 @@ img {
 /* MAIN STYLE */
 h1 {
     font-family: 'Rubik Microbe', cursive;
+    color: var(--red);
 }
 
 main {

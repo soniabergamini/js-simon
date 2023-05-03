@@ -15,10 +15,23 @@ function getRandomNumber(min, max) {
     return number;
 }
 
+// Ask user to input numbers and put them into an array
+function askNumbers(){
+    do {
+        let numberToInsert = userInput.length + 1;
+        let inputSingleNumber = Number(prompt(`Write the ${numberToInsert}° numbers here:`));
+        if (inputSingleNumber > 0 && inputSingleNumber != null && userInput.includes(inputSingleNumber) === false) {
+            userInput.push(inputSingleNumber);
+        }
+    } while (userInput.length < 5);
+    console.log("User input these numbers:", userInput);
+}
+
 /****************** VARIABLES ******************/
 const mainTitle = document.getElementById('title');
 const mainText = document.getElementById('numbers');
 const randomNumbers = [];
+const userInput = [];
 
 /****************** INIT ******************/
 
@@ -26,9 +39,9 @@ const randomNumbers = [];
 do {
    let singleNumber = getRandomNumber(1, 100);
     if (randomNumbers.indexOf(singleNumber) === -1) randomNumbers.push(singleNumber); 
-    // indexOf() is a method that returns -1 if the value is not found inside Array.
+    // indexOf() is a method that returns -1 if the value is not found inside Array. Avoid double numbers 
 } while (randomNumbers.length < 5);
-console.log("Array created", randomNumbers);
+console.log("Array created:", randomNumbers);
 
 // Add Random Numbers on Web Page
 mainText.innerText = `Can you remember these numbers in thirty seconds: ${randomNumbers.join(" - ")} ?`;
@@ -37,6 +50,9 @@ mainText.innerText = `Can you remember these numbers in thirty seconds: ${random
 setTimeout(() => mainText.style.display = "none", 5 * 1000); // After debug, change timeout with 30sec
 
 // Ask user numbers after 31 seconds 
+setTimeout(() => {
+    askNumbers();
+}, 6 * 1000); // After debug, change timeout with 31sec
 
 
 /****************** EVENTS ******************/

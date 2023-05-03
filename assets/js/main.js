@@ -1,5 +1,3 @@
-console.log("ciao");
-
 /****************** FUNCTIONS ******************/
 
 // Create HTML Elements
@@ -36,5 +34,7 @@ console.log("Array created", randomNumbers);
 // Add Random Numbers on Web Page
 mainText.innerText = `Remember these numbers: ${randomNumbers.join(" - ")}`;
 
+// Hide Numbers from page after 30 seconds
+setTimeout(() => mainText.style.display = "none", 5 * 1000); // After debug, change timeout with 30sec
 
 /****************** EVENTS ******************/
